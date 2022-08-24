@@ -19,7 +19,6 @@ class Board extends React.Component {
     const isWinIndex =
       this.props.winIndex && this.props.winIndex.indexOf(i) !== -1;
     // indexOf 배열 내 요소 찾으면 반환, 발견되지 않으면 -1
-    console.log(this.props.winIndex);
     return (
       <Square
         value={this.props.squares[i]}
@@ -68,7 +67,7 @@ class Game extends React.Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+    if (calculateWinner(squares)) {
       return;
     }
     squares[i] = this.state.xIsNext ? "X" : "O";
